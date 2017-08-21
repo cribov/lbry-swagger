@@ -1,0 +1,184 @@
+swagger: '2.0'
+info:
+  description: This is a documentation for lbry protocol.
+  version: 1.0.0
+  title: Lbry Swagger
+  termsOfService: 'http://swagger.io/terms/'
+  contact:
+    email: apiteam@swagger.io
+  license:
+    name: Apache 2.0
+    url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
+host: 'localhost:5279'
+basePath: /lbryapi
+tags:
+  - name: blob
+    description: Everything about your Pets
+    externalDocs:
+      description: Find out more
+      url: 'http://swagger.io'
+  - name: store
+    description: Access to Petstore orders
+  - name: user
+    description: Operations about user
+    externalDocs:
+      description: Find out more about our store
+      url: 'http://swagger.io'
+schemes:
+  - http
+paths:
+  '/#blob_announce_all':
+    post:
+      tags:
+        - blob
+      description: Announce all blobs to the DHT
+      operationId: blob_announce_all
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          required: true
+          schema:
+            $ref: '#/definitions/BlobAnnounceAll'
+      responses:
+        '200':
+          description: Announced
+  '/#blob_delete':
+    post:
+      tags:
+        - blob
+      description: Delete a blob
+      operationId: blob_delete
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          required: true
+          schema:
+            $ref: '#/definitions/DeleteBlob'
+      responses:
+        '200':
+          description: ''
+  '/#blob_get':
+    post:
+      tags:
+        - blob
+      description: >-
+        Returns blob hashes. If not given filters, returns all blobs known by
+        the blob manager
+      operationId: blob_get
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          required: true
+          schema:
+            $ref: '#/definitions/BlobGet'
+      responses:
+        '200':
+          description: ''
+  '/#blob_reflect_all':
+    post:
+      tags:
+        - blob
+      description: Reflects all saved blobs
+      operationId: blob_reflect_all
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          required: true
+          schema:
+            $ref: '#/definitions/BlobReflectAll'
+      responses:
+        '200':
+          description: ''
+  '/#block_show':
+    post:
+      tags:
+        - block
+      description: Get contents of a block
+      operationId: block_show
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          required: true
+          schema:
+            $ref: '#/definitions/Block'
+      responses:
+        '200':
+          description: ''
+definitions:
+  BlobAnnounceAll:
+    type: object
+    required:
+      - method
+    properties:
+      method:
+        type: string
+        example: blob_announce_all
+  DeleteBlob:
+    type: object
+    required:
+      - method
+      - blob_hash
+    properties:
+      method:
+        type: string
+        example: blob_delete
+      blob_hash:
+        type: string
+        example: >-
+          d098e649d4416826fa26b76dc8497acdef327d9c0249f1f87c57ccf5f3bf5278fe873f44404f27bad10e8314286999de
+  BlobGet:
+    type: object
+    required:
+      - method
+    properties:
+      method:
+        type: string
+        example: blob_get
+      timeout:
+        type: integer
+        example: 10
+      encoding:
+        type: string
+        example: json
+      payment_rate_manager:
+        type: string
+        example: only-free
+  BlobReflectAll:
+    type: object
+    required:
+      - method
+    properties:
+      method:
+        type: string
+        example: blob_reflect_all
+  Block:
+    type: object
+    required:
+      - method
+    properties:
+      method:
+        type: string
+        example: block_show
+      blockhash:
+        type: string
+        example: json
