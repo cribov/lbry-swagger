@@ -1,184 +1,1494 @@
-swagger: '2.0'
+swagger: "2.0"
 info:
-  description: This is a documentation for lbry protocol.
-  version: 1.0.0
-  title: Lbry Swagger
-  termsOfService: 'http://swagger.io/terms/'
+  description: "This is a documentation for lbry protocol."
+  version: "1.0.0"
+  title: "Lbry Swagger"
+  termsOfService: "http://swagger.io/terms/"
   contact:
-    email: apiteam@swagger.io
+    email: "apiteam@swagger.io"
   license:
-    name: Apache 2.0
-    url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
-host: 'localhost:5279'
-basePath: /lbryapi
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+host: "localhost:5279"
+basePath: "/lbryapi"
 tags:
-  - name: blob
-    description: Everything about your Pets
-    externalDocs:
-      description: Find out more
-      url: 'http://swagger.io'
-  - name: store
-    description: Access to Petstore orders
-  - name: user
-    description: Operations about user
-    externalDocs:
-      description: Find out more about our store
-      url: 'http://swagger.io'
+- name: "blob"
+- name: "block"
+- name: "channel"
 schemes:
-  - http
+- "http"
 paths:
-  '/#blob_announce_all':
+  /#blob_announce_all:
     post:
       tags:
-        - blob
-      description: Announce all blobs to the DHT
-      operationId: blob_announce_all
+      - "blob"
+      description: "Announce all blobs to the DHT"
+      operationId: "blob_announce_all"
       consumes:
-        - application/json
+      - "application/json"
       produces:
-        - application/json
+      - "application/json"
       parameters:
-        - in: body
-          name: body
-          required: true
-          schema:
-            $ref: '#/definitions/BlobAnnounceAll'
+      - in: "body"
+        name: "body"
+        required: true
+        schema:
+          $ref: "#/definitions/BlobAnnounceAll"
       responses:
-        '200':
-          description: Announced
-  '/#blob_delete':
+          200:
+            description: ""
+
+  /#blob_delete:
     post:
       tags:
-        - blob
-      description: Delete a blob
-      operationId: blob_delete
+      - "blob"
+      description: "Delete a blob"
+      operationId: "blob_delete"
       consumes:
-        - application/json
+      - "application/json"
       produces:
-        - application/json
+      - "application/json"
       parameters:
-        - in: body
-          name: body
-          required: true
-          schema:
-            $ref: '#/definitions/DeleteBlob'
+      - in: "body"
+        name: "body"
+        required: true
+        schema:
+          $ref: "#/definitions/BlobDelete"
       responses:
-        '200':
-          description: ''
-  '/#blob_get':
+          200:
+            description: ""
+
+  /#blob_get:
     post:
       tags:
-        - blob
-      description: >-
-        Returns blob hashes. If not given filters, returns all blobs known by
-        the blob manager
-      operationId: blob_get
+      - "blob"
+      description: "Download and return a blob"
+      operationId: "blob_get"
       consumes:
-        - application/json
+      - "application/json"
       produces:
-        - application/json
+      - "application/json"
       parameters:
-        - in: body
-          name: body
-          required: true
-          schema:
-            $ref: '#/definitions/BlobGet'
+      - in: "body"
+        name: "body"
+        required: true
+        schema:
+          $ref: "#/definitions/BlobGet"
       responses:
-        '200':
-          description: ''
-  '/#blob_reflect_all':
+          200:
+            description: ""
+
+  /#blob_list:
     post:
       tags:
-        - blob
-      description: Reflects all saved blobs
-      operationId: blob_reflect_all
+      - "blob"
+      description: "Returns blob hashes. If not given filters, returns all blobs known by the blob manager"
+      operationId: "blob_list"
       consumes:
-        - application/json
+      - "application/json"
       produces:
-        - application/json
+      - "application/json"
       parameters:
-        - in: body
-          name: body
-          required: true
-          schema:
-            $ref: '#/definitions/BlobReflectAll'
+      - in: "body"
+        name: "body"
+        required: true
+        schema:
+          $ref: "#/definitions/BlobList"
       responses:
-        '200':
-          description: ''
-  '/#block_show':
+          200:
+            description: ""
+
+  /#blob_reflect_all:
     post:
       tags:
-        - block
-      description: Get contents of a block
-      operationId: block_show
+      - "blob"
+      description: "Reflects all saved blobs"
+      operationId: "blob_reflect_all"
       consumes:
-        - application/json
+      - "application/json"
       produces:
-        - application/json
+      - "application/json"
       parameters:
-        - in: body
-          name: body
-          required: true
-          schema:
-            $ref: '#/definitions/Block'
+      - in: "body"
+        name: "body"
+        required: true
+        schema:
+          $ref: "#/definitions/BlobReflectAll"
       responses:
-        '200':
-          description: ''
+          200:
+            description: ""
+
+  /#block_show:
+    post:
+      tags:
+      - "block"
+      description: "Get contents of a block"
+      operationId: "block_show"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        required: true
+        schema:
+          $ref: "#/definitions/BlockShow"
+      responses:
+          200:
+            description: ""
+
+  /#channel_list_mine:
+    post:
+      tags:
+      - "channel"
+      description: "Get my channels"
+      operationId: "channel_list_mine"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        required: true
+        schema:
+          $ref: "#/definitions/ChannelListMine"
+      responses:
+          200:
+            description: ""
+
+  /#channel_new:
+    post:
+      tags:
+      - "channel"
+      description: "Generate a publisher key and create a new certificate claim"
+      operationId: "channel_new"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        required: true
+        schema:
+          $ref: "#/definitions/ChannelNew"
+      responses:
+          200:
+            description: ""
+
+  /#claim_abandon:
+    post:
+      tags:
+      - "claim"
+      description: "Abandon a name and reclaim credits from the claim"
+      operationId: "claim_abandon"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        required: true
+        schema:
+          $ref: "#/definitions/ClaimAbandon"
+      responses:
+          200:
+            description: ""
+
+  /#claim_list:
+    post:
+      tags:
+      - "claim"
+      description: "Get claims for a name"
+      operationId: "claim_list"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        required: true
+        schema:
+          $ref: "#/definitions/ClaimList"
+      responses:
+          200:
+            description: ""
+
+  /#claim_list_mine:
+    post:
+      tags:
+      - "claim"
+      description: "List my name claims"
+      operationId: "claim_list_mine"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        required: true
+        schema:
+          $ref: "#/definitions/ClaimListMine"
+      responses:
+          200:
+            description: ""
+
+  /#claim_new_support:
+    post:
+      tags:
+      - "claim"
+      description: "Support a name claim"
+      operationId: "claim_new_support"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        required: true
+        schema:
+          $ref: "#/definitions/ClaimNewSupport"
+      responses:
+          200:
+            description: ""
+
+  /#claim_show:
+    post:
+      tags:
+      - "claim"
+      description: "Resolve claim info from a LBRY name"
+      operationId: "claim_show"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        required: true
+        schema:
+          $ref: "#/definitions/ClaimShow"
+      responses:
+          200:
+            description: ""
+
+  /#commands:
+    post:
+      tags:
+      - "commands"
+      description: "Return a list of available commands"
+      operationId: "commands"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        required: true
+        schema:
+          $ref: "#/definitions/Commands"
+      responses:
+          200:
+            description: ""
+
+  /#daemon_stop:
+    post:
+      tags:
+      - "daemon"
+      description: "Stop lbrynet-daemon"
+      operationId: "daemon_stop"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        required: true
+        schema:
+          $ref: "#/definitions/DaemonStop"
+      responses:
+          200:
+            description: ""
+
+  /#descriptor_get:
+    post:
+      tags:
+      - "descriptor"
+      description: "Download and return a sd blob"
+      operationId: "descriptor_get"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        required: true
+        schema:
+          $ref: "#/definitions/DescriptorGet"
+      responses:
+          200:
+            description: ""
+
+  /#file_delete:
+    post:
+      tags:
+      - "file"
+      description: "Delete a lbry file"
+      operationId: "file_delete"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        required: true
+        schema:
+          $ref: "#/definitions/FileDelete"
+      responses:
+          200:
+            description: ""
+
+  /#file_list:
+    post:
+      tags:
+      - "file"
+      description: "List files limited by optional filters"
+      operationId: "file_list"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        required: true
+        schema:
+          $ref: "#/definitions/FileList"
+      responses:
+          200:
+            description: ""
+
+  /#file_set_status:
+    post:
+      tags:
+      - "file"
+      description: "Start or stop downloading a file"
+      operationId: "file_set_status"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        required: true
+        schema:
+          $ref: "#/definitions/FileSetStatus"
+      responses:
+          200:
+            description: ""
+
+  /#get:
+    post:
+      tags:
+      - "get"
+      description: "Download stream from a LBRY name."
+      operationId: "get"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        required: true
+        schema:
+          $ref: "#/definitions/Get"
+      responses:
+          200:
+            description: ""
+
+  /#get_availability:
+    post:
+      tags:
+      - "get"
+      description: "Get stream availability for lbry uri"
+      operationId: "get_availability"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        required: true
+        schema:
+          $ref: "#/definitions/GetAvailability"
+      responses:
+          200:
+            description: ""
+
+  /#help:
+    post:
+      tags:
+      - "help"
+      description: "Return a useful message for an API command"
+      operationId: "help"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        required: true
+        schema:
+          $ref: "#/definitions/Help"
+      responses:
+          200:
+            description: ""
+
+  /#peer_list:
+    post:
+      tags:
+      - "peer"
+      description: "Get peers for blob hash"
+      operationId: "peer_list"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        required: true
+        schema:
+          $ref: "#/definitions/PeerList"
+      responses:
+          200:
+            description: ""
+
+  /#publish:
+    post:
+      tags:
+      - "publish"
+      description: "Make a new name claim and publish associated data to lbrynet,"
+      operationId: "publish"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        required: true
+        schema:
+          $ref: "#/definitions/Publish"
+      responses:
+          200:
+            description: ""
+
+  /#reflect:
+    post:
+      tags:
+      - "reflect"
+      description: "Reflect a stream"
+      operationId: "reflect"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        required: true
+        schema:
+          $ref: "#/definitions/Reflect"
+      responses:
+          200:
+            description: ""
+
+  /#report_bug:
+    post:
+      tags:
+      - "report"
+      description: "Report a bug to slack"
+      operationId: "report_bug"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        required: true
+        schema:
+          $ref: "#/definitions/ReportBug"
+      responses:
+          200:
+            description: ""
+
+  /#resolve:
+    post:
+      tags:
+      - "resolve"
+      description: "Resolve a LBRY URI"
+      operationId: "resolve"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        required: true
+        schema:
+          $ref: "#/definitions/Resolve"
+      responses:
+          200:
+            description: ""
+
+  /#resolve_name:
+    post:
+      tags:
+      - "resolve"
+      description: "Resolve stream info from a LBRY name"
+      operationId: "resolve_name"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        required: true
+        schema:
+          $ref: "#/definitions/ResolveName"
+      responses:
+          200:
+            description: ""
+
+  /#send_amount_to_address:
+    post:
+      tags:
+      - "send"
+      description: "Send credits to an address"
+      operationId: "send_amount_to_address"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        required: true
+        schema:
+          $ref: "#/definitions/SendAmountToAddress"
+      responses:
+          200:
+            description: ""
+
+  /#settings_get:
+    post:
+      tags:
+      - "settings"
+      description: "Get daemon settings"
+      operationId: "settings_get"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        required: true
+        schema:
+          $ref: "#/definitions/SettingsGet"
+      responses:
+          200:
+            description: ""
+
+  /#settings_set:
+    post:
+      tags:
+      - "settings"
+      description: "Set daemon settings"
+      operationId: "settings_set"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        required: true
+        schema:
+          $ref: "#/definitions/SettingsSet"
+      responses:
+          200:
+            description: ""
+
+  /#status:
+    post:
+      tags:
+      - "status"
+      description: "Return daemon status"
+      operationId: "status"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        required: true
+        schema:
+          $ref: "#/definitions/Status"
+      responses:
+          200:
+            description: ""
+
+  /#stream_cost_estimate:
+    post:
+      tags:
+      - "stream"
+      description: "Get estimated cost for a lbry stream"
+      operationId: "stream_cost_estimate"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        required: true
+        schema:
+          $ref: "#/definitions/StreamCostEstimate"
+      responses:
+          200:
+            description: ""
+
+  /#transaction_list:
+    post:
+      tags:
+      - "transaction"
+      description: "List transactions belonging to wallet"
+      operationId: "transaction_list"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        required: true
+        schema:
+          $ref: "#/definitions/TransactionList"
+      responses:
+          200:
+            description: ""
+
+  /#transaction_show:
+    post:
+      tags:
+      - "transaction"
+      description: "Get a decoded transaction from a txid"
+      operationId: "transaction_show"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        required: true
+        schema:
+          $ref: "#/definitions/TransactionShow"
+      responses:
+          200:
+            description: ""
+
+  /#version:
+    post:
+      tags:
+      - "version"
+      description: "Get lbry version information"
+      operationId: "version"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        required: true
+        schema:
+          $ref: "#/definitions/Version"
+      responses:
+          200:
+            description: ""
+
+  /#wallet_balance:
+    post:
+      tags:
+      - "wallet"
+      description: "Return the balance of the wallet"
+      operationId: "wallet_balance"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        required: true
+        schema:
+          $ref: "#/definitions/WalletBalance"
+      responses:
+          200:
+            description: ""
+
+  /#wallet_is_address_mine:
+    post:
+      tags:
+      - "wallet"
+      description: "Checks if an address is associated with the current wallet."
+      operationId: "wallet_is_address_mine"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        required: true
+        schema:
+          $ref: "#/definitions/WalletIsAddressMine"
+      responses:
+          200:
+            description: ""
+
+  /#wallet_list:
+    post:
+      tags:
+      - "wallet"
+      description: "List wallet addresses"
+      operationId: "wallet_list"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        required: true
+        schema:
+          $ref: "#/definitions/WalletList"
+      responses:
+          200:
+            description: ""
+
+  /#wallet_new_address:
+    post:
+      tags:
+      - "wallet"
+      description: "Generate a new wallet address"
+      operationId: "wallet_new_address"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        required: true
+        schema:
+          $ref: "#/definitions/WalletNewAddress"
+      responses:
+          200:
+            description: ""
+
+  /#wallet_public_key:
+    post:
+      tags:
+      - "wallet"
+      description: "Get public key from wallet address"
+      operationId: "wallet_public_key"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        required: true
+        schema:
+          $ref: "#/definitions/WalletPublicKey"
+      responses:
+          200:
+            description: ""
+
+  /#wallet_unused_address:
+    post:
+      tags:
+      - "wallet"
+      description: "Return an address containing no balance, will create"
+      operationId: "wallet_unused_address"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        required: true
+        schema:
+          $ref: "#/definitions/WalletUnusedAddress"
+      responses:
+          200:
+            description: ""
+ 
+ 
+#Models
 definitions:
+
   BlobAnnounceAll:
-    type: object
-    required:
-      - method
+    type: "object"
+    required: [method]
     properties:
       method:
-        type: string
-        example: blob_announce_all
-  DeleteBlob:
-    type: object
-    required:
-      - method
-      - blob_hash
+        type: "string"
+        example: "blob_announce_all"      
+
+  BlobDelete:
+    type: "object"
+    required: [method]
     properties:
       method:
-        type: string
-        example: blob_delete
-      blob_hash:
-        type: string
-        example: >-
-          d098e649d4416826fa26b76dc8497acdef327d9c0249f1f87c57ccf5f3bf5278fe873f44404f27bad10e8314286999de
+        type: "string"
+        example: "blob_delete"      
+      BlobHash:
+        type: "string"
+        example:
+
   BlobGet:
-    type: object
-    required:
-      - method
+    type: "object"
+    required: [method]
     properties:
       method:
-        type: string
-        example: blob_get
-      timeout:
-        type: integer
-        example: 10
-      encoding:
-        type: string
-        example: json
-      payment_rate_manager:
-        type: string
-        example: only-free
+        type: "string"
+        example: "blob_get"      
+      BlobHash:
+        type: "string"
+        example:
+      Timeout:
+        type: "integer"
+        example:
+      Encoding:
+        type: "string"
+        example:
+      PaymentRateManager:
+        type: "string"
+        example:
+
+  BlobList:
+    type: "object"
+    required: [method]
+    properties:
+      method:
+        type: "string"
+        example: "blob_list"      
+      Uri:
+        type: "string"
+        example:
+      StreamHash:
+        type: "string"
+        example:
+      SdHash:
+        type: "string"
+        example:
+      Needed:
+        type: "boolean"
+        example:
+      Finished:
+        type: "boolean"
+        example:
+      PageSize:
+        type: "integer"
+        example:
+      Page:
+        type: "integer"
+        example:
+
   BlobReflectAll:
-    type: object
-    required:
-      - method
+    type: "object"
+    required: [method]
     properties:
       method:
-        type: string
-        example: blob_reflect_all
-  Block:
-    type: object
-    required:
-      - method
+        type: "string"
+        example: "blob_reflect_all"      
+
+  BlockShow:
+    type: "object"
+    required: [method]
     properties:
       method:
-        type: string
-        example: block_show
-      blockhash:
-        type: string
-        example: json
+        type: "string"
+        example: "block_show"      
+      Blockhash:
+        type: "string"
+        example:
+
+  ChannelListMine:
+    type: "object"
+    required: [method]
+    properties:
+      method:
+        type: "string"
+        example: "channel_list_mine"      
+
+  ChannelNew:
+    type: "object"
+    required: [method]
+    properties:
+      method:
+        type: "string"
+        example: "channel_new"      
+      ChannelName:
+        type: "string"
+        example:
+      Amount:
+        type: "number"
+        example:
+
+  ClaimAbandon:
+    type: "object"
+    required: [method]
+    properties:
+      method:
+        type: "string"
+        example: "claim_abandon"      
+      ClaimId:
+        type: "string"
+        example:
+
+  ClaimList:
+    type: "object"
+    required: [method]
+    properties:
+      method:
+        type: "string"
+        example: "claim_list"      
+      Name:
+        type: "string"
+        example:
+
+  ClaimListMine:
+    type: "object"
+    required: [method]
+    properties:
+      method:
+        type: "string"
+        example: "claim_list_mine"      
+
+  ClaimNewSupport:
+    type: "object"
+    required: [method]
+    properties:
+      method:
+        type: "string"
+        example: "claim_new_support"      
+      Name:
+        type: "string"
+        example:
+      ClaimId:
+        type: "string"
+        example:
+      Amount:
+        type: "number"
+        example:
+
+  ClaimShow:
+    type: "object"
+    required: [method]
+    properties:
+      method:
+        type: "string"
+        example: "claim_show"      
+      Name:
+        type: "string"
+        example:
+      Txid:
+        type: "string"
+        example:
+      Nout:
+        type: "integer"
+        example:
+      ClaimId:
+        type: "string"
+        example:
+
+  Commands:
+    type: "object"
+    required: [method]
+    properties:
+      method:
+        type: "string"
+        example: "commands"      
+
+  DaemonStop:
+    type: "object"
+    required: [method]
+    properties:
+      method:
+        type: "string"
+        example: "daemon_stop"      
+
+  DescriptorGet:
+    type: "object"
+    required: [method]
+    properties:
+      method:
+        type: "string"
+        example: "descriptor_get"      
+      SdHash:
+        type: "string"
+        example:
+      Timeout:
+        type: "integer"
+        example:
+      PaymentRateManager:
+        type: "string"
+        example:
+
+  FileDelete:
+    type: "object"
+    required: [method]
+    properties:
+      method:
+        type: "string"
+        example: "file_delete"      
+      Name:
+        type: "string"
+        example:
+      SdHash:
+        type: "string"
+        example:
+      FileName:
+        type: "string"
+        example:
+      StreamHash:
+        type: "string"
+        example:
+      ClaimId:
+        type: "string"
+        example:
+      Outpoint:
+        type: "string"
+        example:
+      Rowid:
+        type: "integer"
+        example:
+      DeleteTargetFile:
+        type: "boolean"
+        example:
+
+  FileList:
+    type: "object"
+    required: [method]
+    properties:
+      method:
+        type: "string"
+        example: "file_list"      
+      Name:
+        type: "string"
+        example:
+      SdHash:
+        type: "string"
+        example:
+      FileName:
+        type: "string"
+        example:
+      StreamHash:
+        type: "string"
+        example:
+      ClaimId:
+        type: "string"
+        example:
+      Outpoint:
+        type: "string"
+        example:
+      Rowid:
+        type: "integer"
+        example:
+      FullStatus:
+        type: "boolean"
+        example:
+
+  FileSetStatus:
+    type: "object"
+    required: [method]
+    properties:
+      method:
+        type: "string"
+        example: "file_set_status"      
+      Status:
+        type: "string"
+        example:
+      Name:
+        type: "string"
+        example:
+      SdHash:
+        type: "string"
+        example:
+      FileName:
+        type: "string"
+        example:
+
+  Get:
+    type: "object"
+    required: [method]
+    properties:
+      method:
+        type: "string"
+        example: "get"      
+      Uri:
+        type: "string"
+        example:
+      FileName:
+        type: "string"
+        example:
+      Timeout:
+        type: "integer"
+        example:
+      DownloadDirectory:
+        type: "string"
+        example:
+
+  GetAvailability:
+    type: "object"
+    required: [method]
+    properties:
+      method:
+        type: "string"
+        example: "get_availability"      
+      Uri:
+        type: "string"
+        example:
+      SdTimeout:
+        type: "integer"
+        example:
+      PeerTimeout:
+        type: "integer"
+        example:
+
+  Help:
+    type: "object"
+    required: [method]
+    properties:
+      method:
+        type: "string"
+        example: "help"      
+      Command:
+        type: "string"
+        example:
+
+  PeerList:
+    type: "object"
+    required: [method]
+    properties:
+      method:
+        type: "string"
+        example: "peer_list"      
+      BlobHash:
+        type: "string"
+        example:
+      Timeout:
+        type: "integer"
+        example:
+
+  Publish:
+    type: "object"
+    required: [method]
+    properties:
+      method:
+        type: "string"
+        example: "publish"      
+      Name:
+        type: "string"
+        example:
+      Bid:
+        type: "number"
+        example:
+      Metadata:
+        type: "string"
+        example:
+      FilePath:
+        type: "string"
+        example:
+      Fee:
+        type: "string"
+        example:
+      Title:
+        type: "string"
+        example:
+      Description:
+        type: "string"
+        example:
+      Author:
+        type: "string"
+        example:
+      Language:
+        type: "string"
+        example:
+      License:
+        type: "string"
+        example:
+      LicenseUrl:
+        type: "string"
+        example:
+      Thumbnail:
+        type: "string"
+        example:
+      Preview:
+        type: "string"
+        example:
+      Nsfw:
+        type: "boolean"
+        example:
+      Sources:
+        type: "string"
+        example:
+      ChannelName:
+        type: "string"
+        example:
+
+  Reflect:
+    type: "object"
+    required: [method]
+    properties:
+      method:
+        type: "string"
+        example: "reflect"      
+      SdHash:
+        type: "string"
+        example:
+
+  ReportBug:
+    type: "object"
+    required: [method]
+    properties:
+      method:
+        type: "string"
+        example: "report_bug"      
+      Message:
+        type: "string"
+        example:
+
+  Resolve:
+    type: "object"
+    required: [method]
+    properties:
+      method:
+        type: "string"
+        example: "resolve"      
+      Uri:
+        type: "string"
+        example:
+
+  ResolveName:
+    type: "object"
+    required: [method]
+    properties:
+      method:
+        type: "string"
+        example: "resolve_name"      
+      Name:
+        type: "string"
+        example:
+
+  SendAmountToAddress:
+    type: "object"
+    required: [method]
+    properties:
+      method:
+        type: "string"
+        example: "send_amount_to_address"      
+      Amount:
+        type: "number"
+        example:
+      Address:
+        type: "string"
+        example:
+
+  SettingsGet:
+    type: "object"
+    required: [method]
+    properties:
+      method:
+        type: "string"
+        example: "settings_get"      
+
+  SettingsSet:
+    type: "object"
+    required: [method]
+    properties:
+      method:
+        type: "string"
+        example: "settings_set"      
+      RunOnStartup:
+        type: "boolean"
+        example:
+      DataRate:
+        type: "number"
+        example:
+      MaxKeyFee:
+        type: "number"
+        example:
+      DisableMaxKeyFee:
+        type: "boolean"
+        example:
+      DownloadDirectory:
+        type: "string"
+        example:
+      PeerPort:
+        type: "integer"
+        example:
+      MaxUpload:
+        type: "number"
+        example:
+      MaxDownload:
+        type: "number"
+        example:
+      DownloadTimeout:
+        type: "integer"
+        example:
+      SearchTimeout:
+        type: "number"
+        example:
+      CacheTime:
+        type: "integer"
+        example:
+
+  Status:
+    type: "object"
+    required: [method]
+    properties:
+      method:
+        type: "string"
+        example: "status"      
+      SessionStatus:
+        type: "boolean"
+        example:
+
+  StreamCostEstimate:
+    type: "object"
+    required: [method]
+    properties:
+      method:
+        type: "string"
+        example: "stream_cost_estimate"      
+      Name:
+        type: "string"
+        example:
+      Size:
+        type: "string"
+        example:
+
+  TransactionList:
+    type: "object"
+    required: [method]
+    properties:
+      method:
+        type: "string"
+        example: "transaction_list"      
+
+  TransactionShow:
+    type: "object"
+    required: [method]
+    properties:
+      method:
+        type: "string"
+        example: "transaction_show"      
+      Txid:
+        type: "string"
+        example:
+
+  Version:
+    type: "object"
+    required: [method]
+    properties:
+      method:
+        type: "string"
+        example: "version"      
+
+  WalletBalance:
+    type: "object"
+    required: [method]
+    properties:
+      method:
+        type: "string"
+        example: "wallet_balance"      
+      Address:
+        type: "string"
+        example:
+      IncludeUnconfirmed:
+        type: "string"
+        example:
+
+  WalletIsAddressMine:
+    type: "object"
+    required: [method]
+    properties:
+      method:
+        type: "string"
+        example: "wallet_is_address_mine"      
+      Address:
+        type: "string"
+        example:
+
+  WalletList:
+    type: "object"
+    required: [method]
+    properties:
+      method:
+        type: "string"
+        example: "wallet_list"      
+
+  WalletNewAddress:
+    type: "object"
+    required: [method]
+    properties:
+      method:
+        type: "string"
+        example: "wallet_new_address"      
+
+  WalletPublicKey:
+    type: "object"
+    required: [method]
+    properties:
+      method:
+        type: "string"
+        example: "wallet_public_key"      
+      Address:
+        type: "string"
+        example:
+
+  WalletUnusedAddress:
+    type: "object"
+    required: [method]
+    properties:
+      method:
+        type: "string"
+        
+        
