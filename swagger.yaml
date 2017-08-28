@@ -35,8 +35,8 @@ paths:
         schema:
           $ref: "#/definitions/BlobAnnounceAll"
       responses:
-        '200':
-          description: ""
+          200:
+            description: ""
 
   /#blob_delete:
     post:
@@ -869,24 +869,24 @@ definitions:
 
   BlobDelete:
     type: "object"
-    required: [method,blobHash]
+    required: [method,blobhash]
     properties:
       method:
         type: "string"
         example: "blob_delete"      
-      blobHash:
+      blobhash:
         type: "string"
         description: "Hash of blob to get"
         example:
 
   BlobGet:
     type: "object"
-    required: [method,blobHash]
+    required: [method,blobhash]
     properties:
       method:
         type: "string"
         example: "blob_get"      
-      blobHash:
+      blobhash:
         type: "string"
         description: "Blob hash of blob to get"
         example:
@@ -898,7 +898,7 @@ definitions:
         type: "string"
         description: "By default no attempt at decoding is made, can be set to one of the following decoders: 'json'"
         example:
-      paymentRateManager:
+      paymentratemanager:
         type: "string"
         description: "If not given the default payment rate manager will be used. supported alternative rate managers: 'only-free'"
         example:
@@ -914,11 +914,11 @@ definitions:
         type: "string"
         description: "Filter by blobs in stream for winning claim"
         example:
-      streamHash:
+      streamhash:
         type: "string"
         description: "Filter by blobs in given stream hash"
         example:
-      sdHash:
+      sdhash:
         type: "string"
         description: "Filter by blobs in given sd hash"
         example:
@@ -930,7 +930,7 @@ definitions:
         type: "boolean"
         description: "Only return finished blobs"
         example:
-      pageSize:
+      pagesize:
         type: "integer"
         description: "Limit number of results returned"
         example:
@@ -969,12 +969,12 @@ definitions:
 
   ChannelNew:
     type: "object"
-    required: [method,channelName,amount]
+    required: [method,channelname,amount]
     properties:
       method:
         type: "string"
         example: "channel_new"      
-      channelName:
+      channelname:
         type: "string"
         description: "'@' prefixed name"
         example:
@@ -985,12 +985,12 @@ definitions:
 
   ClaimAbandon:
     type: "object"
-    required: [method,claimId]
+    required: [method,claimid]
     properties:
       method:
         type: "string"
         example: "claim_abandon"      
-      claimId:
+      claimid:
         type: "string"
         description: "Claim_id of claim"
         example:
@@ -1017,7 +1017,7 @@ definitions:
 
   ClaimNewSupport:
     type: "object"
-    required: [method,name,claimId,amount]
+    required: [method,name,claimid,amount]
     properties:
       method:
         type: "string"
@@ -1026,7 +1026,7 @@ definitions:
         type: "string"
         description: "Name"
         example:
-      claimId:
+      claimid:
         type: "string"
         description: "Claim ID of claim to support"
         example:
@@ -1054,7 +1054,7 @@ definitions:
         type: "integer"
         description: "If specified, look for claim with this nout"
         example:
-      claimId:
+      claimid:
         type: "string"
         description: "If specified, look for claim with this claim_id"
         example:
@@ -1077,12 +1077,12 @@ definitions:
 
   DescriptorGet:
     type: "object"
-    required: [method,sdHash]
+    required: [method,sdhash]
     properties:
       method:
         type: "string"
         example: "descriptor_get"      
-      sdHash:
+      sdhash:
         type: "string"
         description: "Hash of sd blob"
         example:
@@ -1090,7 +1090,7 @@ definitions:
         type: "integer"
         description: "Timeout in number of seconds"
         example:
-      paymentRateManager:
+      paymentratemanager:
         type: "string"
         description: "If not given the default payment rate manager will be used. supported alternative rate managers: only-free"
         example:
@@ -1106,19 +1106,19 @@ definitions:
         type: "string"
         description: "Delete file by lbry name,"
         example:
-      sdHash:
+      sdhash:
         type: "string"
         description: "Delete file by sd hash,"
         example:
-      fileName:
+      filename:
         type: "string"
         description: "Delete file by the name in the downloads folder,"
         example:
-      streamHash:
+      streamhash:
         type: "string"
         description: "Delete file by stream hash,"
         example:
-      claimId:
+      claimid:
         type: "string"
         description: "Delete file by claim ID,"
         example:
@@ -1130,14 +1130,14 @@ definitions:
         type: "integer"
         description: "Delete file by rowid in the file manager"
         example:
-      deleteTargetFile:
+      deletetargetfile:
         type: "boolean"
         description: "Delete file from downloads folder, defaults to true if false only the blobs and db entries will be deleted"
         example:
 
   FileList:
     type: "object"
-    required: [method,fullStatus]
+    required: [method,fullstatus]
     properties:
       method:
         type: "string"
@@ -1146,19 +1146,19 @@ definitions:
         type: "string"
         description: "Filter files by lbry name,"
         example:
-      sdHash:
+      sdhash:
         type: "string"
         description: "Filter files by sd hash,"
         example:
-      fileName:
+      filename:
         type: "string"
         description: "Filter files by the name in the downloads folder,"
         example:
-      streamHash:
+      streamhash:
         type: "string"
         description: "Filter files by stream hash,"
         example:
-      claimId:
+      claimid:
         type: "string"
         description: "Filter files by claim id,"
         example:
@@ -1170,7 +1170,7 @@ definitions:
         type: "integer"
         description: "Filter files by internal row id,"
         example:
-      fullStatus:
+      fullstatus:
         type: "boolean"
         description: "If true populate the 'message' and 'size' fields"
         example:
@@ -1190,11 +1190,11 @@ definitions:
         type: "string"
         description: "Start file by lbry name,"
         example:
-      sdHash:
+      sdhash:
         type: "string"
         description: "Start file by the hash in the name claim,"
         example:
-      fileName:
+      filename:
         type: "string"
         description: "Start file by its name in the downloads folder,"
         example:
@@ -1210,7 +1210,7 @@ definitions:
         type: "string"
         description: "Lbry uri to download"
         example:
-      fileName:
+      filename:
         type: "string"
         description: "A user specified name for the downloaded file"
         example:
@@ -1218,7 +1218,7 @@ definitions:
         type: "integer"
         description: "Download timeout in number of seconds"
         example:
-      downloadDirectory:
+      downloaddirectory:
         type: "string"
         description: "Path to directory where file will be saved"
         example:
@@ -1234,11 +1234,11 @@ definitions:
         type: "string"
         description: "Lbry uri"
         example:
-      sdTimeout:
+      sdtimeout:
         type: "integer"
         description: "Sd blob download timeout"
         example:
-      peerTimeout:
+      peertimeout:
         type: "integer"
         description: "How long to look for peers"
         example:
@@ -1257,12 +1257,12 @@ definitions:
 
   PeerList:
     type: "object"
-    required: [method,blobHash]
+    required: [method,blobhash]
     properties:
       method:
         type: "string"
         example: "peer_list"      
-      blobHash:
+      blobhash:
         type: "string"
         description: "Blob hash"
         example:
@@ -1290,7 +1290,7 @@ definitions:
         type: "string"
         description: "Metadata to associate with the claim."
         example:
-      filePath:
+      filepath:
         type: "string"
         description: "Path to file to be associated with name. If provided, If no path is given but a metadata dict is provided, the source from the given metadata will be used."
         example:
@@ -1318,7 +1318,7 @@ definitions:
         type: "string"
         description: "License for the file"
         example:
-      licenseUrl:
+      licenseurl:
         type: "string"
         description: "URL to license"
         example:
@@ -1338,19 +1338,19 @@ definitions:
         type: "string"
         description: "{'lbry_sd_hash':sd_hash} specifies sd hash of file"
         example:
-      channelName:
+      channelname:
         type: "string"
         description: "Name of the publisher channel"
         example:
 
   Reflect:
     type: "object"
-    required: [method,sdHash]
+    required: [method,sdhash]
     properties:
       method:
         type: "string"
         example: "reflect"      
-      sdHash:
+      sdhash:
         type: "string"
         description: "Sd_hash of lbry file"
         example:
@@ -1417,52 +1417,52 @@ definitions:
 
   SettingsSet:
     type: "object"
-    required: [method,runOnStartup,dataRate,maxKeyFee,disableMaxKeyFee,downloadDirectory,peerPort,maxUpload,maxDownload,downloadTimeout,searchTimeout,cacheTime]
+    required: [method,runonstartup,datarate,maxkeyfee,disablemaxkeyfee,downloaddirectory,peerport,maxupload,maxdownload,downloadtimeout,searchtimeout,cachetime]
     properties:
       method:
         type: "string"
         example: "settings_set"      
-      runOnStartup:
+      runonstartup:
         type: "boolean"
         description: "Currently not supported"
         example:
-      dataRate:
+      datarate:
         type: "number"
         description: "Data rate,"
         example:
-      maxKeyFee:
+      maxkeyfee:
         type: "number"
         description: "Maximum key fee,"
         example:
-      disableMaxKeyFee:
+      disablemaxkeyfee:
         type: "boolean"
         description: "True to disable max_key_fee check,"
         example:
-      downloadDirectory:
+      downloaddirectory:
         type: "string"
         description: "Path of where files are downloaded,"
         example:
-      peerPort:
+      peerport:
         type: "integer"
         description: "Port through which daemon should connect,"
         example:
-      maxUpload:
+      maxupload:
         type: "number"
         description: ", currently not supported"
         example:
-      maxDownload:
+      maxdownload:
         type: "number"
         description: ", currently not supported"
         example:
-      downloadTimeout:
+      downloadtimeout:
         type: "integer"
         description: "Download timeout in seconds"
         example:
-      searchTimeout:
+      searchtimeout:
         type: "number"
         description: "Search timeout in seconds"
         example:
-      cacheTime:
+      cachetime:
         type: "integer"
         description: "Cache timeout in seconds"
         example:
@@ -1474,7 +1474,7 @@ definitions:
       method:
         type: "string"
         example: "status"      
-      sessionStatus:
+      sessionstatus:
         type: "boolean"
         description: "True to return session status, default is false"
         example:
@@ -1534,7 +1534,7 @@ definitions:
         type: "string"
         description: "If address is provided only that balance will be given"
         example:
-      includeUnconfirmed:
+      includeunconfirmed:
         type: "string"
         description: "If set unconfirmed balance will be included in the only takes effect when address is also provided."
         example:
