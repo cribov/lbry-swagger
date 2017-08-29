@@ -893,7 +893,7 @@ definitions:
       timeout:
         type: "integer"
         description: "Timeout in number of seconds"
-        example:
+        example: 10
       encoding:
         type: "string"
         description: "By default no attempt at decoding is made, can be set to one of the following decoders: 'json'"
@@ -925,19 +925,19 @@ definitions:
       needed:
         type: "boolean"
         description: "Only return needed blobs"
-        example:
+        example: true
       finished:
         type: "boolean"
         description: "Only return finished blobs"
-        example:
+        example: true
       pagesize:
         type: "integer"
         description: "Limit number of results returned"
-        example:
+        example: 50
       page:
         type: "integer"
         description: "Filter to page x of [page_size] results"
-        example:
+        example: 30
 
   BlobReflectAll:
     type: "object"
@@ -981,7 +981,7 @@ definitions:
       amount:
         type: "number"
         description: "Amount to claim name"
-        example:
+        example: 0.01
 
   ClaimAbandon:
     type: "object"
@@ -993,7 +993,7 @@ definitions:
       claimid:
         type: "string"
         description: "Claim_id of claim"
-        example:
+        example: "e8583f57b0db10ffce71bb2ba9446850ca030791"
 
   ClaimList:
     type: "object"
@@ -1029,11 +1029,11 @@ definitions:
       claimid:
         type: "string"
         description: "Claim ID of claim to support"
-        example:
+        example: "e8583f57b0db10ffce71bb2ba9446850ca030791"
       amount:
         type: "number"
         description: "Amount to support by"
-        example:
+        example: 0.01
 
   ClaimShow:
     type: "object"
@@ -1049,7 +1049,7 @@ definitions:
       txid:
         type: "string"
         description: "If specified, look for claim with this txid"
-        example:
+        example: "fae753d4e653ef47cc6203988f685156d97d6f832d4ae68138aebe4edc13de2c"
       nout:
         type: "integer"
         description: "If specified, look for claim with this nout"
@@ -1057,7 +1057,7 @@ definitions:
       claimid:
         type: "string"
         description: "If specified, look for claim with this claim_id"
-        example:
+        example: "e8583f57b0db10ffce71bb2ba9446850ca030791"
 
   Commands:
     type: "object"
@@ -1089,7 +1089,7 @@ definitions:
       timeout:
         type: "integer"
         description: "Timeout in number of seconds"
-        example:
+        example: 10
       paymentratemanager:
         type: "string"
         description: "If not given the default payment rate manager will be used. supported alternative rate managers: only-free"
@@ -1121,7 +1121,7 @@ definitions:
       claimid:
         type: "string"
         description: "Delete file by claim ID,"
-        example:
+        example: "e8583f57b0db10ffce71bb2ba9446850ca030791"
       outpoint:
         type: "string"
         description: "Delete file by claim outpoint,"
@@ -1133,7 +1133,7 @@ definitions:
       deletetargetfile:
         type: "boolean"
         description: "Delete file from downloads folder, defaults to true if false only the blobs and db entries will be deleted"
-        example:
+        example: false
 
   FileList:
     type: "object"
@@ -1145,11 +1145,11 @@ definitions:
       name:
         type: "string"
         description: "Filter files by lbry name,"
-        example:
+        example: "Foo"
       sdhash:
         type: "string"
         description: "Filter files by sd hash,"
-        example:
+        example: 
       filename:
         type: "string"
         description: "Filter files by the name in the downloads folder,"
@@ -1161,7 +1161,7 @@ definitions:
       claimid:
         type: "string"
         description: "Filter files by claim id,"
-        example:
+        example: "e8583f57b0db10ffce71bb2ba9446850ca030791"
       outpoint:
         type: "string"
         description: "Filter files by claim outpoint,"
@@ -1173,7 +1173,7 @@ definitions:
       fullstatus:
         type: "boolean"
         description: "If true populate the 'message' and 'size' fields"
-        example:
+        example: true
 
   FileSetStatus:
     type: "object"
@@ -1185,7 +1185,7 @@ definitions:
       status:
         type: "string"
         description: "'start' or 'stop'"
-        example:
+        example: "start"
       name:
         type: "string"
         description: "Start file by lbry name,"
@@ -1217,7 +1217,7 @@ definitions:
       timeout:
         type: "integer"
         description: "Download timeout in number of seconds"
-        example:
+        example: 10
       downloaddirectory:
         type: "string"
         description: "Path to directory where file will be saved"
@@ -1237,11 +1237,11 @@ definitions:
       sdtimeout:
         type: "integer"
         description: "Sd blob download timeout"
-        example:
+        example: 10
       peertimeout:
         type: "integer"
         description: "How long to look for peers"
-        example:
+        example: 30
 
   Help:
     type: "object"
@@ -1253,7 +1253,7 @@ definitions:
       command:
         type: "string"
         description: "Command to retrieve documentation for"
-        example:
+        example: "publish"
 
   PeerList:
     type: "object"
@@ -1265,11 +1265,11 @@ definitions:
       blobhash:
         type: "string"
         description: "Blob hash"
-        example:
+        example: 
       timeout:
         type: "integer"
         description: "Peer search timeout in seconds"
-        example:
+        example: 30
 
   Publish:
     type: "object"
@@ -1285,7 +1285,7 @@ definitions:
       bid:
         type: "number"
         description: "Amount of credits to commit in this claim,"
-        example:
+        example: 0.01
       metadata:
         type: "string"
         description: "Metadata to associate with the claim."
@@ -1333,11 +1333,11 @@ definitions:
       nsfw:
         type: "boolean"
         description: "True if not safe for work"
-        example:
+        example: true
       sources:
         type: "string"
         description: "{'lbry_sd_hash':sd_hash} specifies sd hash of file"
-        example:
+        example: "{'lbry_sd_hash':sd_hash}"
       channelname:
         type: "string"
         description: "Name of the publisher channel"
@@ -1365,7 +1365,7 @@ definitions:
       message:
         type: "string"
         description: "Message to send"
-        example:
+        example: "There are not bug"
 
   Resolve:
     type: "object"
@@ -1398,14 +1398,14 @@ definitions:
       method:
         type: "string"
         example: "send_amount_to_address"      
-      amount:
+      amount: 
         type: "number"
         description: "The amount to send"
-        example:
+        example: 0.01
       address:
         type: "string"
         description: "The address of the recipient in base58"
-        example:
+        example: "bMiq3QQuQPrVZsisscT9yJKf2bSjc3F99C"
 
   SettingsGet:
     type: "object"
@@ -1437,7 +1437,7 @@ definitions:
       disablemaxkeyfee:
         type: "boolean"
         description: "True to disable max_key_fee check,"
-        example:
+        example: false
       downloaddirectory:
         type: "string"
         description: "Path of where files are downloaded,"
@@ -1445,27 +1445,27 @@ definitions:
       peerport:
         type: "integer"
         description: "Port through which daemon should connect,"
-        example:
+        example: 5221
       maxupload:
         type: "number"
-        description: ", currently not supported"
-        example:
+        description: "Currently not supported"
+        example: 
       maxdownload:
         type: "number"
-        description: ", currently not supported"
+        description: "Currently not supported"
         example:
       downloadtimeout:
         type: "integer"
         description: "Download timeout in seconds"
-        example:
+        example: 30
       searchtimeout:
         type: "number"
         description: "Search timeout in seconds"
-        example:
+        example: 30
       cachetime:
         type: "integer"
         description: "Cache timeout in seconds"
-        example:
+        example: 10
 
   Status:
     type: "object"
@@ -1477,7 +1477,7 @@ definitions:
       sessionstatus:
         type: "boolean"
         description: "True to return session status, default is false"
-        example:
+        example: true
 
   StreamCostEstimate:
     type: "object"
@@ -1513,7 +1513,7 @@ definitions:
       txid:
         type: "string"
         description: "Txid of transaction"
-        example:
+        example: "fae753d4e653ef47cc6203988f685156d97d6f832d4ae68138aebe4edc13de2c"
 
   Version:
     type: "object"
@@ -1533,7 +1533,7 @@ definitions:
       address:
         type: "string"
         description: "If address is provided only that balance will be given"
-        example:
+        example: "bMiq3QQuQPrVZsisscT9yJKf2bSjc3F99C"
       includeunconfirmed:
         type: "string"
         description: "If set unconfirmed balance will be included in the only takes effect when address is also provided."
@@ -1549,7 +1549,7 @@ definitions:
       address:
         type: "string"
         description: "Address to check in base 58"
-        example:
+        example: "bMiq3QQuQPrVZsisscT9yJKf2bSjc3F99C"
 
   WalletList:
     type: "object"
@@ -1577,7 +1577,7 @@ definitions:
       address:
         type: "string"
         description: "Wallet address in base58"
-        example:
+        example: "bMiq3QQuQPrVZsisscT9yJKf2bSjc3F99C"
 
   WalletUnusedAddress:
     type: "object"
